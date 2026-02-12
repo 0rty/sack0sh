@@ -35,7 +35,7 @@ parser = argparse.ArgumentParser(
     description='A pentesting tool to exploit the low layer vulnerabilities as CAM flooding, ARP spoofing, and other network layer attacks.'
 )
 parser.add_argument('-i', '--interface', type=str, required=True, help='Network interface to use for the attack')
-parser.add_argument('-m', '--mac', type=str, help='MAC address of the victim (required for CAM Spoofing and ARP Spoofing attacks)')
+parser.add_argument('-m', '--mac', type=str, help='MAC address of the victim (required for CAM Spoofing)')
 parser.add_argument('-t', '--target', type=str, required=True, help='Target IP')
 parser.add_argument('-t2', '--target2', type=str, help='Second target IP (depending on the attack)')
 parser.add_argument('-a', '--attack', type=str, required=True, choices=['CF','CS', 'ARPS', 'DHCPSTARV'], help="""Type of attack to perform:
