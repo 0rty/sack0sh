@@ -13,7 +13,7 @@
 
 ---
 
-## 📌 Overview
+## Overview
 
 **Sack0sh** is a Linux-based penetration testing tool designed to demonstrate and exploit common network vulnerabilities.
 
