@@ -284,6 +284,7 @@ def restore_arp(s, mac_src, ip_src, mac_dst, ip_dst):
 def arp_spoofing():
     if not args.target:
         print("[!] Error: --target is required for ARP Spoofing (-a ARPS).")
+        return
     if not args.target2:
         print("[!] Error: --target2 is required for ARP Spoofing (-a ARPS).")
         return
