@@ -9,7 +9,7 @@
         \/     \/     \/     \/      \/     \/     \/ 
 ```
 
-A low-level network pentesting tool written in pure Python 3 using raw sockets — no external dependencies.
+A low-level network pentesting tool written in pure Python 3 using raw sockets (no external dependencies).
 
 > **DISCLAIMER** : This tool is for **educational purposes only**. Always obtain proper authorization before performing any security testing. Never use this tool on networks or systems you do not own or have explicit permission to test.
 
