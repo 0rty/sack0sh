@@ -11,7 +11,7 @@
 
 A low-level network pentesting tool written in pure Python 3 using raw sockets — no external dependencies.
 
-> **DISCLAIMER** — This tool is for **educational purposes only**. Always obtain proper authorization before performing any security testing. Never use this tool on networks or systems you do not own or have explicit permission to test.
+> **DISCLAIMER** : This tool is for **educational purposes only**. Always obtain proper authorization before performing any security testing. Never use this tool on networks or systems you do not own or have explicit permission to test.
 
 ---
 
@@ -19,10 +19,10 @@ A low-level network pentesting tool written in pure Python 3 using raw sockets �
 
 | Attack | Description |
 |--------|-------------|
-| `CF` | **CAM Flooding** — Floods the switch CAM table with random MAC addresses |
-| `CS` | **CAM Spoofing** — Sends frames with a spoofed source MAC to poison the CAM table |
-| `ARPS` | **ARP Spoofing** — Poisons ARP caches to perform a Man-in-the-Middle attack |
-| `DHCPSTARV` | **DHCP Starvation** — Exhausts the DHCP pool by sending DISCOVER + REQUEST with random MACs |
+| `CF` | **CAM Flooding** : Floods the switch CAM table with random MAC addresses |
+| `CS` | **CAM Spoofing** : Sends frames with a spoofed source MAC to poison the CAM table |
+| `ARPS` | **ARP Spoofing** : Poisons ARP caches to perform a Man-in-the-Middle attack |
+| `DHCPSTARV` | **DHCP Starvation** : Exhausts the DHCP pool by sending DISCOVER + REQUEST with random MACs |
 
 ---
 
@@ -32,7 +32,7 @@ A low-level network pentesting tool written in pure Python 3 using raw sockets �
 - Python 3.10+ (uses `match` statement)
 - Root privileges
 
-No external dependencies — uses only the Python standard library (`socket`, `struct`, `threading`, `subprocess`).
+No external dependencies, uses only the Python standard library (`socket`, `struct`, `threading`, `subprocess`).
 
 ---
 
@@ -85,7 +85,7 @@ sudo python3 sack0sh.py -i eth0 -a DHCPSTARV -vv
 
 ### CAM Flooding (`CF`)
 
-Switches maintain a CAM (Content Addressable Memory) table that maps MAC addresses to ports. This table has a limited size. By flooding the switch with frames using random spoofed MAC addresses, the CAM table overflows and the switch falls back to broadcasting all traffic — behaving like a hub. This allows an attacker to sniff traffic not destined for their machine.
+Switches maintain a CAM (Content Addressable Memory) table that maps MAC addresses to ports. This table has a limited size. By flooding the switch with frames using random spoofed MAC addresses, the CAM table overflows and the switch falls back to broadcasting all traffic, behaving like a hub. This allows an attacker to sniff traffic not destined for their machine.
 
 ```
 Attacker → sends thousands of frames with random MACs
@@ -100,7 +100,7 @@ Sends frames with the attacker's real MAC as source but targeting a specific vic
 
 ### ARP Spoofing (`ARPS`)
 
-ARP (Address Resolution Protocol) maps IP addresses to MAC addresses on a local network. Since ARP has no authentication, an attacker can send unsolicited ARP replies to poison the ARP cache of two targets — making each believe the attacker's MAC corresponds to the other's IP.
+ARP (Address Resolution Protocol) maps IP addresses to MAC addresses on a local network. Since ARP has no authentication, an attacker can send unsolicited ARP replies to poison the ARP cache of two targets, making each believe the attacker's MAC corresponds to the other's IP.
 
 ```
 Normal:   Victim ←→ Gateway
@@ -149,7 +149,7 @@ A minimal isolated lab using VirtualBox with 3 VMs.
 
 </div>
 
-### Step 1 — VirtualBox Network
+### Step 1 - VirtualBox Network
 
 For each VM, set the network adapter to **Internal Network**:
 ```
@@ -158,7 +158,7 @@ VM → Settings → Network → Adapter 1
     → Name: pentest-lab
 ```
 
-### Step 2 — Attacker (Kali Linux)
+### Step 2 - Attacker (Kali Linux)
 
 Download the pre-built VirtualBox image from https://www.kali.org/get-kali/#kali-virtual-machines.
 
@@ -173,7 +173,7 @@ Clone the tool:
 git clone https://github.com/your-username/sack0sh
 ```
 
-### Step 3 — Victim (Ubuntu Server 22.04)
+### Step 3 - Victim (Ubuntu Server 22.04)
 
 Configure a static IP via netplan:
 ```bash
@@ -191,7 +191,7 @@ sudo netplan apply
 sudo apt install net-tools -y   # for arp -n
 ```
 
-### Step 4 — Gateway / DHCP Server (Ubuntu Server 22.04)
+### Step 4 - Gateway / DHCP Server (Ubuntu Server 22.04)
 
 Configure a static IP:
 ```bash
@@ -224,7 +224,7 @@ dhcp-range=192.168.100.50,192.168.100.100,12h
 sudo systemctl restart dnsmasq
 ```
 
-### Step 5 — Verify the lab
+### Step 5 - Verify the lab
 
 ```bash
 # From Kali
