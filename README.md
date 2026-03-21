@@ -39,7 +39,7 @@ No external dependencies, uses only the Python standard library (`socket`, `stru
 ## Installation
 
 ```bash
-git clone https://github.com/your-username/sack0sh
+git clone https://github.com/0rty/sack0sh
 cd sack0sh
 ```
 
